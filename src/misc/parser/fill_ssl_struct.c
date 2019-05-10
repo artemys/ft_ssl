@@ -6,7 +6,7 @@
 /*   By: aliandie <aliandie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/15 15:07:24 by aliandie          #+#    #+#             */
-/*   Updated: 2019/04/15 15:14:09 by aliandie         ###   ########.fr       */
+/*   Updated: 2019/04/23 19:03:40 by aliandie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,12 @@
 
 void		fill_ssl_struct(t_ssl		*ssl, char		**av, int ac)
 {
-	if (ac = 0)
-		return(NULL);
+	if (ac == 0)
+		return;
 	else
+	{
 		ft_strcpy(ssl->initial_str, av[0]);
+		ssl->initial_size = ft_strlen(ssl->initial_str);
+	}
+	
 }

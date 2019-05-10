@@ -6,7 +6,7 @@
 /*   By: aliandie <aliandie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 17:37:02 by aliandie          #+#    #+#             */
-/*   Updated: 2019/04/15 15:14:21 by aliandie         ###   ########.fr       */
+/*   Updated: 2019/04/23 19:05:04 by aliandie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,10 @@
  # include "stuct.h"
  # include "stdio.h"
  # include "stdint.h"
+ # include "constants.h"
 
 /* misc/memory */
-t_ssl	*init_ssl_stuct(void);
+t_ssl		*init_ssl_stuct(char **av);
 void		fill_ssl_struct(t_ssl		*ssl, char		**av, int ac);
 
 

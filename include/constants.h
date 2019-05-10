@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   malloc.c                                           :+:      :+:    :+:   */
+/*   constants.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aliandie <aliandie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/04/11 18:10:13 by aliandie          #+#    #+#             */
-/*   Updated: 2019/04/23 19:05:29 by aliandie         ###   ########.fr       */
+/*   Created: 2019/04/22 14:26:12 by aliandie          #+#    #+#             */
+/*   Updated: 2019/04/22 14:31:55 by aliandie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ssl.h"
+# ifndef CONSTANTS_H
+	# define CONSTANTS_H
 
-t_ssl	*init_ssl_stuct(char **av)
-{
-	t_ssl	*ssl;
+	/* errorcode */
+	# define ERROR_NO_ARG	1
+	
 
-	ssl = NULL;
-	if (!(ssl = (t_ssl*)malloc(sizeof(t_ssl))))
-		return (NULL);
-	return (ssl);
-}
+#endif

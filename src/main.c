@@ -6,7 +6,7 @@
 /*   By: aliandie <aliandie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/09 17:21:47 by aliandie          #+#    #+#             */
-/*   Updated: 2019/04/15 15:16:09 by aliandie         ###   ########.fr       */
+/*   Updated: 2019/04/23 19:04:45 by aliandie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ int		main(int	ac, char	**av)
 {
 	t_ssl	*ssl;
 
-	ssl = init_ssl_stuct();
+	ssl = init_ssl_stuct(av);
 
-	fill_ssl_struct(ssl, av, ac);
+	fill_ssl_struct(ssl, ac);
 	
 
 
