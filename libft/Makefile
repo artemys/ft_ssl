@@ -6,7 +6,7 @@
 #    By: nfinkel <nfinkel@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/28 18:20:14 by nfinkel           #+#    #+#              #
-#    Updated: 2019/03/15 13:31:10 by nfinkel          ###   ########.fr        #
+#    Updated: 2019/05/10 22:56:58 by nfinkel          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -156,7 +156,7 @@ $(DYN_OBJDIR)%.o: %.c
 clean:
 	@/bin/rm -rf $(OBJDIR)
 	@/bin/rm -rf $(DYN_OBJDIR)
-	@printf  "\033[1;32mCleaning object files -> \033[91m$(NAME)\033[0m\033[1:32m:\033[0m%-13s\033[32m[✔]\033[0m\n"
+	@printf  "\033[1;32mCleaning object files -> \033[91m$(NAME)\033[0m\033[1;32m:\033[0m%-13s\033[32m[✔]\033[0m\n"
 
 fast:
 	@$(MAKE) --no-print-directory $(FAST)
@@ -164,7 +164,7 @@ fast:
 fclean: clean
 	@/bin/rm -f $(NAME)
 	@/bin/rm -f $(DYN_NAME)
-	@printf  "\033[1;32mCleaning binary -------> \033[91m$(NAME)\033[0m\033[1:32m:\033[0m%-13s\033[32m[✔]\033[0m\n"
+	@printf  "\033[1;32mCleaning binary -------> \033[91m$(NAME)\033[0m\033[1;32m:\033[0m%-13s\033[32m[✔]\033[0m\n"
 
 nohdl: HDL :=
 nohdl: re

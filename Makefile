@@ -44,7 +44,7 @@ all: $(LFT) $(NAME)
 
 $(NAME): $(OBJECTS)
 	@$(CC) $(FLAGS) $(O_FLAG) $(patsubst %.c,$(OBJDIR)%.o,$(notdir $(SRCS))) -L $(LIBFTDIR) -lft -o $@
-	@printf  "\033[92m\033[1;32mCompiling -------------> \033[91m$(NAME)\033[0m\033[1;32m:\033[0m%-12s\033[32m[✔]\033[0m\n"
+	@printf "\033[92m\033[1;32mCompiling -------------> \033[91m$(NAME)\033[0m\033[1;32m:\033[0m%-14s\033[32m[✔]\033[0m\n"
 
 $(OBJECTS): | $(OBJDIR)
 
@@ -52,26 +52,26 @@ $(OBJDIR):
 	@mkdir -p $@
 
 $(OBJDIR)%.o: %.c
-	@printf  "\033[1;92mCompiling $(NAME)\033[0m %-21s\033[32m[$<]\033[0m\n"
+	@printf "\033[1;92mCompiling $(NAME)\033[0m %-29s\033[32m[$<]\033[0m\n"
 	@$(CC) $(FLAGS) $(O_FLAG) $(HEADERS) -fpic -c $< -o $@
 	@printf "\033[A\033[2K"
 
 clean:
 	@/bin/rm -rf $(OBJDIR)
-	@printf  "\033[1;32mCleaning object files -> \033[91m$(NAME)\033[0m\033[1;32m:\033[0m%-6s\033[32m[✔]\033[0m\n"
+	@printf "\033[1;32mCleaning object files -> \033[91m$(NAME)\033[0m\033[1;32m:\033[0m%-14s\033[32m[✔]\033[0m\n"
 
 fast:
 	@$(MAKE) --no-print-directory $(FAST)
 
 fclean: clean
 	@/bin/rm -f $(NAME)
-	@printf  "\033[1;32mCleaning binary -------> \033[91m$(NAME)\033[0m\033[1;32m:\033[0m%-6s\033[32m[✔]\033[0m\n"
+	@printf "\033[1;32mCleaning binary -------> \033[91m$(NAME)\033[0m\033[1;32m:\033[0m%-14s\033[32m[✔]\033[0m\n"
 
 $(LFT):
-	@$(MAKE) fast -C $(LIBFTDIR)
+	@$(MAKE) --no-print-directory fast -C $(LIBFTDIR)
 
 mrproper: fclean
-	@$(MAKE) fclean -C $(LIBFTDIR)
+	@$(MAKE) --no-print-directory fclean -C $(LIBFTDIR)
 
 noflags: FLAGS := 
 noflags: re
