@@ -6,15 +6,14 @@
 /*   By: aliandie <aliandie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/22 14:26:12 by aliandie          #+#    #+#             */
-/*   Updated: 2019/04/22 14:31:55 by aliandie         ###   ########.fr       */
+/*   Updated: 2019/05/10 22:28:37 by nfinkel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# ifndef CONSTANTS_H
-	# define CONSTANTS_H
+#ifndef CONSTANTS_H
+# define CONSTANTS_H
 
-	/* errorcode */
-	# define ERROR_NO_ARG	1
-	
+/* errorcode */
+# define ERROR_NO_ARG	1
 
 #endif

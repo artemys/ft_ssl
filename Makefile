@@ -1,59 +1,81 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: aliandie <aliandie@student.42.fr>          +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/04/09 17:11:37 by aliandie          #+#    #+#              #
-#    Updated: 2019/04/22 14:20:33 by aliandie         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+#################
+##  VARIABLES  ##
+#################
 
+#	Environment
+OS :=					$(shell uname -s)
 
-NAME = ft_ssl
-CCLIB = -Llibft -lft
-CCFLAGS = -g -Wall -Werror -Wextra
-SRCDIR = src
-OBJDIR = obj
-MISCDIR = misc
-MEMDIR = memory
-ERRDIR = error
-PARSDIR = praser
-INCDIR = include/
+#	Output
+NAME :=					ft_ssl
+LFT :=					$(LIBFTDIR)/libft.a
 
-SRC = 	main.c\
-		md5/md5_algo.c\
-		md5/md5_memory.c\
-		md5/md5_padding.c\
-		misc/memory/malloc.c\
-		misc/parser/fill_ssl_struct.c\
+#	Compiler
+CC :=					gcc
 
-	
+#	Flags
+FLAGS =					-Wall -Wextra -Wcast-align -Wconversion -Werror -g3
+ifeq ($(OS), Darwin)
+	THREADS :=			$(shell sysctl -n hw.ncpu)
+else
+	THREADS :=			4
+endif
+HEADERS :=				-I ./include
 
-SRCS = $(addprefix $(SRCDIR)/, $(SRC))
-OBJS = $(addprefix $(OBJDIR)/, $(SRC:.c=.o))
-INCS = $(addprefix -I , $(INCDIR))
+FAST :=					-j$(THREADS)
+O_FLAG :=				-O0
 
-all: $(NAME)
-$(NAME): build $(OBJS)
-		@make -C libft
-		@gcc $(CCLIB) -o $(NAME) $(OBJS)
-build:
-		@mkdir -p $(OBJDIR)
-		@mkdir -p $(OBJDIR)/misc/parser
-		@mkdir -p $(OBJDIR)/md5
+#	Directories
+LIBFTDIR :=				./libft/
+OBJDIR :=				./build/
+SRCDIR :=				./src/
+
+#	Sources
+SRCS +=					md5_algo.c md5_memory.c md5_padding.c main.c
+SRCS +=					free.c malloc.c check_param.c fill_ssl_struct.c
+OBJECTS +=				$(patsubst %.c,$(OBJDIR)%.o,$(SRCS))
+
+vpath %.c $(SRCDIR)
+
+#################
+##    RULES    ##
+#################
+
+all: $(LFT) $(NAME)
+
+$(NAME): $(OBJECTS)
+	@$(CC) $(FLAGS) $(O_FLAG) $(patsubst %.c,$(OBJDIR)%.o,$(notdir $(SRCS))) -L $(LIBFTDIR) -lft -o $@
+	@printf  "\033[92m\033[1;32mCompiling -------------> \033[91m$(NAME)\033[0m\033[1;32m:\033[0m%-12s\033[32m[✔]\033[0m\n"
+
+$(OBJECTS): | $(OBJDIR)
+
+$(OBJDIR):
+	@mkdir -p $@
+
+$(OBJDIR)%.o: %.c
+	@printf  "\033[1;92mCompiling $(NAME)\033[0m %-21s\033[32m[$<]\033[0m\n"
+	@$(CC) $(FLAGS) $(O_FLAG) $(HEADERS) -fpic -c $< -o $@
+	@printf "\033[A\033[2K"
 
 clean:
-		@make -C libft clean
-		@rm -f $(OBJS)
+	@/bin/rm -rf $(OBJDIR)
+	@printf  "\033[1;32mCleaning object files -> \033[91m$(NAME)\033[0m\033[1;32m:\033[0m%-6s\033[32m[✔]\033[0m\n"
+
+fast:
+	@$(MAKE) --no-print-directory $(FAST)
+
 fclean: clean
-		@make -C libft fclean
-		@rm -f $(NAME)
+	@/bin/rm -f $(NAME)
+	@printf  "\033[1;32mCleaning binary -------> \033[91m$(NAME)\033[0m\033[1;32m:\033[0m%-6s\033[32m[✔]\033[0m\n"
+
+$(LFT):
+	@$(MAKE) fast -C $(LIBFTDIR)
+
+mrproper: fclean
+	@$(MAKE) fclean -C $(LIBFTDIR)
+
+noflags: FLAGS := 
+noflags: re
+
 re: fclean all
 
-dev : all
-		@./$(NAME)
-
-$(OBJDIR)/%.o: $(SRCDIR)/%.c
-		@gcc -c $(CCFLAGS) $(INCS) -o $@ $<
+.PHONY: all clean fast fclean noflags re
