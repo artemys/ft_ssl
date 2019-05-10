@@ -17,9 +17,9 @@ int		main(int	ac, char	**av)
 {
 	t_ssl	*ssl;
 
-	ssl = init_ssl_stuct(av);
+	ssl = init_ssl_stuct();
 
-	fill_ssl_struct(ssl, ac);
+	fill_ssl_struct(ssl, av, ac);
 	
 
 

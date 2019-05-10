@@ -20,7 +20,7 @@ MISCDIR = misc
 MEMDIR = memory
 ERRDIR = error
 PARSDIR = praser
-INCDIR = include libft/include
+INCDIR = include/
 
 SRC = 	main.c\
 		md5/md5_algo.c\
@@ -42,7 +42,7 @@ $(NAME): build $(OBJS)
 build:
 		@mkdir -p $(OBJDIR)
 		@mkdir -p $(OBJDIR)/misc/parser
-		
+		@mkdir -p $(OBJDIR)/md5
 
 clean:
 		@make -C libft clean

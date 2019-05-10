@@ -12,7 +12,7 @@
 
 #include "ssl.h"
 
-t_ssl	*init_ssl_stuct(char **av)
+t_ssl	*init_ssl_stuct(void)
 {
 	t_ssl	*ssl;
 

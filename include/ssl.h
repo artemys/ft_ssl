@@ -13,13 +13,13 @@
 #ifndef SSL_H
  # define SSL_H
  # include "../libft/libft.h"
- # include "stuct.h"
+ # include "struct.h"
  # include "stdio.h"
  # include "stdint.h"
  # include "constants.h"
 
 /* misc/memory */
-t_ssl		*init_ssl_stuct(char **av);
+t_ssl		*init_ssl_stuct();
 void		fill_ssl_struct(t_ssl		*ssl, char		**av, int ac);
 
 
