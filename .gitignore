@@ -1,3 +1,4 @@
 .idea
 build
 ft_ssl
+libft/libft.a
