@@ -14,5 +14,5 @@
 
 void	check_param(t_ssl *ssl)
 {
-	(void)ssl;
+	
 }

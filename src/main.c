@@ -21,10 +21,12 @@ int		main(int	ac, char	**av)
 		.initial_str = NULL,
 		.initial_size = 0
 	};
+	check_param();
+	parse_param();
+	fill_ssl_struct(&ssl);
 
-	fill_ssl_struct(&ssl, av, ac);
-
-	int i;
+	execut();
+	/*int i;
 	i = 0;
 
 	while (av[i])
@@ -33,6 +35,6 @@ int		main(int	ac, char	**av)
 		printf("%i\n", ac);
 		i++;
 	}
-	printf("ssl=%s\n", ssl.initial_str);
+	printf("ssl=%s\n", ssl.initial_str);*/
 	return(0);
 }
