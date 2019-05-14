@@ -11,22 +11,62 @@
 /* ************************************************************************** */
 
 #include "ssl.h"
+void	parser(t_ssl	*ssl, char **av)
+{
+	bool parse;
+	int i;
+	char *opt = (char *)malloc(sizeof(char));
 
+	parse = true;
+	i = 1;
+	printf("%ld\n", ssl->initial_size);
+	while (parse == true && av[i])
+	{
+		if(av[i][0] == '-')
+		{
+			printf("%s\n", &av[i][1]);
+			ft_strcpy(opt, &av[i][1]);
+			
+			if(ft_strcmp(opt, "p") == 0)
+			{
+				printf("%s\n", "opt p is passed");
+			}
+			else if (ft_strcmp(opt, "q") == 0)
+			{
+				printf("%s\n", "opt q is passed");
+			}
+			else if (ft_strcmp(opt, "r") == 0)
+			{
+				printf("%s\n", "opt r is passed");
+			}
+			else if (ft_strcmp(opt, "s") == 0)
+			{
+				printf("%s\n", "opt s is passed");
+			}
+			else
+				printf("%s\n", "no opt is passed");
+			
+		}
+		i++;
+		
+	}
+	return;
+}
 
 int		main(int	ac, char	**av)
 {
 	t_ssl	ssl;
-
+	(void)ac;
 	ssl = (t_ssl){
 		.initial_str = NULL,
 		.initial_size = 0
 	};
-	check_param();
-	parse_param();
-	fill_ssl_struct(&ssl);
+	parser(&ssl, av);
+	// parse_param();
+	// fill_ssl_struct(&ssl);
 
-	execut();
-	/*int i;
+	// execut();
+/*	int i;
 	i = 0;
 
 	while (av[i])

@@ -21,5 +21,5 @@
 /* misc/memory */
 t_ssl		*init_ssl_stuct();
 void		fill_ssl_struct(t_ssl		*ssl, char		**av, int ac);
-
+void		parser(t_ssl		*ssl, char **av);
 #endif
