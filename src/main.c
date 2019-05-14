@@ -53,17 +53,53 @@ void	parser(t_ssl	*ssl, char **av)
 	return;
 }
 
+void	get_str_from_stdin(){
+
+	char 	ch[1024];
+	while( fgets(ch, 1000, stdin) )
+	{
+	   	printf("%s\n", ch);
+	}	
+	return;
+}
+
+void get_str_from_file(){
+   char ch, file_name[25];
+   FILE *fp;
+ 
+   printf("Enter name of a file you wish to see\n");
+   gets(file_name);
+ 
+   fp = fopen(file_name, "r"); // read mode
+ 
+   if (fp == NULL)
+   {
+      perror("Error while opening the file.\n");
+      exit(EXIT_FAILURE);
+   }
+ 
+   printf("The contents of %s file are:\n", file_name);
+ 
+   while((ch = fgetc(fp)) != EOF)
+      printf("%c", ch);
+ 
+   fclose(fp);
+   return 0;
+}
+
+
 int		main(int	ac, char	**av)
 {
 	t_ssl	ssl;
 	(void)ac;
+	get_str_from_stdin();
 	ssl = (t_ssl){
 		.initial_str = NULL,
 		.initial_size = 0
 	};
+	//fill_ssl_struct(&ssl, av, ac);
 	parser(&ssl, av);
 	// parse_param();
-	// fill_ssl_struct(&ssl);
 
 	// execut();
 /*	int i;

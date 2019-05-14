@@ -18,9 +18,9 @@ void		fill_ssl_struct(t_ssl		*ssl, char		**av, int ac)
 		return;
 	else
 	{
-
-
 		ft_strcpy(ssl->initial_str, av[1]);
 		ssl->initial_size = ft_strlen(ssl->initial_str);
+		printf("%ld\n", ssl->initial_size);
+
 	}
 }

@@ -17,6 +17,7 @@
 # include "stdio.h"
 # include "stdint.h"
 # include "constants.h"
+# include "stdlib.h"
 
 /* misc/memory */
 t_ssl		*init_ssl_stuct();

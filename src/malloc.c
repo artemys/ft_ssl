@@ -12,12 +12,12 @@
 
 #include "ssl.h"
 
-t_ssl	*init_ssl_stuct(void)
+/*void	init_ssl_stuct(t_ssl	*ssl)
 {
 	t_ssl	*ssl;
 
-	ssl = NULL;
 	if (!(ssl = (t_ssl*)malloc(sizeof(t_ssl))))
 		return (NULL);
 	return (ssl);
 }
+*/
